@@ -1,3 +1,5 @@
+// ScriptFlow-Bot-main/routes/auth.js
+
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
@@ -13,8 +15,8 @@ router.get('/callback', passport.authenticate('discord', {
 });
 
 // Rota de logout
-router.get('/logout', (req, res) => {
-    req.logout((err) => {
+router.get('/logout', (req, res, next) => {
+    req.logout(function(err) {
         if (err) { return next(err); }
         res.redirect('/');
     });
