@@ -29,6 +29,8 @@ passport.deserializeUser((obj, done) => {
     done(null, obj);
 });
 
+// COLE ESTE BLOCO CORRIGIDO NO LUGAR DO ANTIGO
+
 const scopes = ['identify', 'guilds'];
 
 passport.use(new DiscordStrategy({
