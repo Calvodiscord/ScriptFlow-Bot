@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<nav class="navbar">
+    <div class="navbar-brand">ScriptFlow Bot</div>
+    <div class="user-info">
+        <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png" alt="Avatar">
+        <span><%= user.username %>#<%= user.discriminator %></span>
+        <a href="/auth/logout" class="logout-button">Sair</a>
+    </div>
+</nav>
+
+<div class="dashboard-container">
+    <h2>Painel de Controle</h2>
+    
+    <div class="card">
+        <h3>Enviar Mensagem</h3>
+        <p>Envie uma mensagem para um canal através do bot.</p>
+        <form action="/dashboard/send-message" method="POST">
+            <select name="channelId" required>
+                <option value="" disabled selected>Selecione um Servidor/Canal</option>
+                <% guilds.forEach(guild => { %>
+                    <optgroup label="<%= guild.name %>">
+                        <!-- Esta parte requereria mais lógica para listar canais, simplificado por agora -->
+                        <option value="ID_DO_CANAL_AQUI">#geral (Exemplo)</option>
+                    </optgroup>
+                <% }); %>
+            </select>
+            <input type="text" name="channelId" placeholder="Ou cole o ID do Canal aqui" required>
+            <textarea name="message" placeholder="Sua mensagem..." required></textarea>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer') %>
