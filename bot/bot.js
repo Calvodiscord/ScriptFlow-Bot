@@ -1,3 +1,5 @@
+// ScriptFlow-Bot-main/bot/bot.js
+
 const { Client, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
 
@@ -5,12 +7,13 @@ require('dotenv').config();
 const bot = new Client({
     intents: [
         GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ]
 });
 
 bot.on('ready', () => {
-    console.log(`🤖 ${bot.user.username} está online!`);
+    console.log(`🤖 Bot ${bot.user.username} está online!`);
 });
 
 // Faça login no Discord com o token do seu bot
