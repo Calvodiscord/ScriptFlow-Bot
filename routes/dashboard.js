@@ -1,3 +1,5 @@
+// ScriptFlow-Bot-main/routes/dashboard.js
+
 const express = require('express');
 const router = express.Router();
 
@@ -29,12 +31,15 @@ router.post('/send-message', checkAuth, async (req, res) => {
             await channel.send(message);
             res.redirect('/dashboard?status=success');
         } else {
-            res.redirect('/dashboard?status=error');
+            res.redirect('/dashboard?status=error_channel_not_found');
         }
     } catch (error) {
         console.error("Erro ao enviar mensagem:", error);
-        res.redirect('/dashboard?status=error');
+        res.redirect('/dashboard?status=error_sending');
     }
+});
+
+module.exports = router;    }
 });
 
 module.exports = router;
